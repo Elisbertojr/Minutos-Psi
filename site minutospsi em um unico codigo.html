@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minutos Psi</title>
+  <meta name="description" content="Minutos Psi: resumos claros de psicologia, abordagens, teóricos, áreas e psicologia para concursos com vídeos explicativos." />
+
+  <meta name="keywords" content="psicologia, abordagens da psicologia, teóricos da psicologia, psicologia para concursos, psicologia clínica, psicologia organizacional" />
+
+  <meta name="author" content="Minutos Psi" />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- SEO Social (opcional mas recomendado) -->
+<meta property="og:title" content="Minutos Psi | Psicologia em minutos" />
+<meta property="og:description" content="Conteúdos organizados de psicologia com resumos e vídeos." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+  <style>
+    :root{
+      --bg:#0a0c0f;
+      --border:rgba(160,230,255,0.18);
+      --text:rgba(220,240,255,0.92);
+      --muted:rgba(220,240,255,0.64);
+      --accent:#33d6ff;
+      --accent2:#7ce6ff;
+      --danger:#ff3b3b;
+      --shadow:0 16px 40px rgba(0,0,0,0.5);
+    }
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 800px at 70% 30%, rgba(51,214,255,0.10), transparent 60%),
+        radial-gradient(900px 600px at 20% 80%, rgba(124,230,255,0.08), transparent 65%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none;}
+    .app{min-height:100%;display:grid;grid-template-columns:290px 1fr;}
+
+    .sidebar{
+      border-right:1px solid rgba(255,255,255,0.06);
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding:18px;
+      display:flex;flex-direction:column;gap:18px;
+      position:sticky;top:0;height:100vh;
+    }
+    .brand{
+      display:flex;gap:12px;align-items:center;
+      padding:12px;border:1px solid rgba(255,255,255,0.06);
+      border-radius:18px;background:rgba(0,0,0,0.25);box-shadow:var(--shadow);
+    }
+    .brand-mark{
+      width:44px;height:44px;border-radius:14px;
+      display:grid;place-items:center;
+      color:var(--accent2);font-size:26px;font-weight:800;
+      border:1px solid var(--border);
+      background:rgba(51,214,255,0.06);
+    }
+    .brand-title{font-weight:800;letter-spacing:.3px;}
+    .brand-subtitle{font-size:12px;color:var(--muted);margin-top:2px;}
+
+    .menu{display:flex;flex-direction:column;gap:10px;}
+    .menu-btn{
+      padding:12px;border-radius:14px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(0,0,0,0.20);
+      transition:transform .12s ease,border-color .12s ease,background .12s ease;
+      cursor:pointer;
+      text-align:left;
+      color:var(--text);
+    }
+    .menu-btn:hover{
+      transform:translateY(-1px);
+      border-color:var(--border);
+      background:rgba(51,214,255,0.06);
+    }
+    .hint{
+      margin-top:auto;
+      padding:12px;border-radius:14px;border:1px dashed rgba(255,255,255,0.10);
+      color:var(--muted);font-size:12px;line-height:1.4;
+    }
+
+    .main{min-width:0;}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;
+      padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.06);
+      background:rgba(0,0,0,0.20);backdrop-filter:blur(10px);
+      position:sticky;top:0;z-index:10;
+    }
+    .topbar-left{display:flex;align-items:center;gap:12px;min-width:0;}
+    .topbar-title{font-weight:700;color:var(--accent2);white-space:nowrap;}
+    .now-text{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap;}
+
+    /* ===== PASSO 3: BUSCA ===== */
+    .search{
+      display:flex;align-items:center;gap:10px;
+      width:min(640px, 100%);
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.04);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+      min-width:0;
+    }
+    .search span{
+      color:var(--muted);
+      font-weight:800;
+      user-select:none;
+    }
+    .search input{
+      width:100%;
+      border:0;
+      outline:none;
+      background:transparent;
+      color:var(--text);
+      font-size:14px;
+      min-width:0;
+    }
+    .clear-btn{
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:12px;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .clear-btn:hover{
+      border-color:var(--border);
+      background:rgba(51,214,255,0.06);
+      color:var(--accent2);
+    }
+
+    .hero{padding:22px 18px 8px;}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:420px 1fr;
+      gap:18px;
+      align-items:center;
+    }
+    .card{
+      padding:18px;border-radius:20px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(0,0,0,0.24);
+      box-shadow:var(--shadow);
+      min-width:0;
+    }
+    .card h1{margin:0 0 8px 0;font-size:28px;}
+    .card p{margin:0;color:var(--muted);line-height:1.55;}
+
+    /* Relógio */
+    .clock{width:420px;height:420px;margin:0 auto;}
+    .clock-face{
+      width:100%;height:100%;border-radius:50%;
+      position:relative;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(0,0,0,0.65) 0 40%, transparent 41%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 0 62%, transparent 63%),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.50));
+      border:10px solid rgba(255,255,255,0.06);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .tick{
+      position:absolute;left:50%;top:16px;
+      width:4px;height:24px;background:rgba(124,230,255,0.55);
+      transform:translateX(-50%);border-radius:3px;
+    }
+    .t3{transform:translateX(-50%) rotate(90deg);transform-origin:50% 194px;}
+    .t6{transform:translateX(-50%) rotate(180deg);transform-origin:50% 194px;}
+    .t9{transform:translateX(-50%) rotate(270deg);transform-origin:50% 194px;}
+    .numeral{
+      position:absolute;font-weight:800;
+      color:rgba(124,230,255,0.75);
+      text-shadow:0 2px 12px rgba(0,0,0,0.65);
+      user-select:none;
+    }
+    .n12{top:34px;left:50%;transform:translateX(-50%);font-size:86px;color:rgba(124,230,255,0.65);}
+    .n3{right:44px;top:50%;transform:translateY(-50%);font-size:62px;}
+    .n6{bottom:28px;left:50%;transform:translateX(-50%);font-size:62px;}
+    .n9{left:44px;top:50%;transform:translateY(-50%);font-size:62px;}
+    .hand{
+      position:absolute;left:50%;top:50%;
+      transform-origin:50% 100%;
+      transform:translate(-50%,-100%) rotate(0deg);
+      border-radius:10px;
+    }
+    .hand.hour{width:12px;height:110px;background:rgba(220,240,255,0.82);box-shadow:0 8px 18px rgba(0,0,0,0.6);}
+    .hand.minute{width:8px;height:150px;background:rgba(220,240,255,0.82);box-shadow:0 10px 22px rgba(0,0,0,0.6);}
+    .hand.second{width:3px;height:170px;background:var(--danger);box-shadow:0 10px 22px rgba(0,0,0,0.6);}
+    .pin{
+      position:absolute;left:50%;top:50%;
+      width:14px;height:14px;border-radius:50%;
+      transform:translate(-50%,-50%);
+      background:var(--danger);
+      border:2px solid rgba(255,255,255,0.35);
+    }
+    .logo-text{
+      position:absolute;left:50%;bottom:70px;
+      transform:translateX(-50%);
+      text-align:center;
+      color:rgba(51,214,255,0.95);
+      font-weight:900;letter-spacing:.5px;user-select:none;
+    }
+    .logo-line{font-size:44px;line-height:1;}
+
+    /* Seções */
+    .sections{padding:6px 18px 30px;}
+    .section{margin-top:18px;padding-top:10px;}
+    .section h2{
+      margin:0 0 12px 0;
+      color:var(--accent2);
+      font-size:20px;
+      letter-spacing:.2px;
+    }
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+    /* Accordion */
+    .topic{padding:0;overflow:hidden;}
+    .topic-head{
+      width:100%;
+      border:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      background:transparent;
+      color:var(--text);
+      cursor:pointer;
+      text-align:left;
+    }
+    .topic-title{
+      margin:0;
+      font-size:16px;
+      font-weight:800;
+      color:rgba(220,240,255,0.95);
+    }
+    .topic-arrow{
+      width:34px;height:34px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.04);
+      display:grid;place-items:center;
+      flex:0 0 auto;
+      transition:transform .15s ease, border-color .15s ease, background .15s ease;
+      color:var(--accent2);
+      font-weight:900;
+    }
+    .topic.open .topic-arrow{
+      transform:rotate(180deg);
+      border-color:var(--border);
+      background:rgba(51,214,255,0.06);
+    }
+    .topic-body{
+      padding:0 16px 16px 16px;
+      color:var(--muted);
+      display:none;
+    }
+    .topic.open .topic-body{display:block;}
+    .topic-body p{margin:0 0 10px 0;line-height:1.5;}
+
+    /* Vídeo */
+    .video{
+      margin-top:10px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(0,0,0,0.35);
+    }
+    iframe{width:100%;height:300px;border:0;display:block;}
+
+    /* Estado "nada encontrado" */
+    .no-results{
+      display:none;
+      margin: 14px 0 0 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.18);
+      color: var(--muted);
+    }
+    .no-results strong{color: var(--accent2);}
+
+    @media (max-width: 980px){
+      .app{grid-template-columns:1fr;}
+      .sidebar{position:relative;height:auto;}
+      .hero-grid{grid-template-columns:1fr;}
+      .clock{width:340px;height:340px;}
+      .grid{grid-template-columns:1fr;}
+      iframe{height:250px;}
+      .topbar{flex-wrap:wrap;}
+      .search{width:100%;}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">Ψ</div>
+        <div>
+          <div class="brand-title">Minutos Psi</div>
+          <div class="brand-subtitle">Conteúdos de psicologia + vídeos</div>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <button class="menu-btn" data-go="#abordagens">Abordagens da Psicologia</button>
+        <button class="menu-btn" data-go="#teoricos">Teóricos da Psicologia</button>
+        <button class="menu-btn" data-go="#areas">Áreas da Psicologia</button>
+        <button class="menu-btn" data-go="#concursos">Psicologia para Concursos</button>
+      </nav>
+
+      <div class="hint">
+        ✅ Busca ligada: digite no campo “Pesquisar” e o site filtra por título/resumo.<br><br>
+        
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="topbar-title">Minutos Psi</div>
+          <div class="now-text" id="nowText">--:--:--</div>
+        </div>
+
+        <!-- ===== PASSO 3: BUSCA ===== -->
+        <div class="search" role="search" aria-label="Pesquisar assuntos">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Pesquisar por tema, teórico, resumo..." />
+          <button id="clearSearch" class="clear-btn" type="button">Limpar</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="clock" aria-label="Relógio analógico">
+            <div class="clock-face">
+              <div class="tick t12"></div>
+              <div class="tick t3"></div>
+              <div class="tick t6"></div>
+              <div class="tick t9"></div>
+
+              <div class="numeral n12">Ψ</div>
+              <div class="numeral n3">3</div>
+              <div class="numeral n6">6</div>
+              <div class="numeral n9">9</div>
+
+              <div class="hand hour" id="hourHand"></div>
+              <div class="hand minute" id="minuteHand"></div>
+              <div class="hand second" id="secondHand"></div>
+              <div class="pin"></div>
+
+              <div class="logo-text">
+                <div class="logo-line">Minutos</div>
+                <div class="logo-line">Psi</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h1>Minutos Psi</h1>
+            <p>
+              Seu Canal de Psicologia
+            </p>
+
+            <div class="no-results" id="noResults">
+              Nada encontrado para <strong id="noResultsTerm"></strong>.
+              Tente outra palavra.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sections">
+
+        <!-- ============================================================
+          ✅ COMO ADICIONAR SUBASSUNTOS NOVOS
+          1) Vá até a seção desejada (ex.: id="abordagens")
+          2) Dentro do <div class="grid"> ... </div> cole um “CARD DE SUBASSUNTO”
+          3) EDITE APENAS:
+             - Título: <h3 class="topic-title"> ... </h3>
+             - Resumo: <p data-summary> ... </p>
+             - Link YouTube completo: data-youtube="COLE_AQUI"
+        ============================================================ -->
+
+        <!-- ===================== SEÇÃO: ABORDAGENS ===================== -->
+        <div class="section" id="abordagens">
+          <h2>Abordagens da Psicologia</h2>
+          <div class="grid">
+
+            <!-- ===================== CARD DE SUBASSUNTO (COPIE ESTE BLOCO) ===================== -->
+            <article class="card topic" data-accordion data-topic>
+              <button class="topic-head" type="button">
+                <h3 class="topic-title" data-title>Behaviorismo</h3>
+                <span class="topic-arrow">⌄</span>
+              </button>
+              <div class="topic-body">
+                <p data-summary>O behaviorismo revolucionou a psicologia ao focar no que pode ser observado: o comportamento. Neste vídeo, você vai entender o que é o behaviorismo, suas principais ideias e como ele explica a aprendizagem a partir da relação entre estímulos, respostas, reforços e punições. Apresentamos os principais autores — Watson, Pavlov e Skinner</p>
+                <div class="video">
+                  <iframe
+                    data-youtube="https://youtu.be/iQ6aL_yiYVg"
+                    title="Behaviorismo - YouTube"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </article>
+            <!-- ===================== FIM DO CARD (COPIE ATÉ AQUI) ===================== -->
+
+            <article class="card topic" data-accordion data-topic>
+              <button class="topic-head" type="button">
+                <h3 class="topic-title" data-title>Psicanálise</h3>
+                <span class="topic-arrow">⌄</span>
+              </button>
+              <div class="topic-body">
+                <p data-summary>Resumo breve: inconsciente, conflitos psíquicos e processos simbólicos na formação do sujeito.</p>
+                <div class="video">
+                  <iframe
+                    data-youtube="https://youtu.be/dQw4w9WgXcQ"
+                    title="Psicanálise - YouTube"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ===================== SEÇÃO: TEÓRICOS ===================== -->
+        <div class="section" id="teoricos">
+          <h2>Teóricos da Psicologia</h2>
+          <div class="grid">
+            <article class="card topic" data-accordion data-topic>
+              <button class="topic-head" type="button">
+                <h3 class="topic-title" data-title>Jean Piaget</h3>
+                <span class="topic-arrow">⌄</span>
+              </button>
+              <div class="topic-body">
+                <p data-summary>Resumo breve: estágios do desenvolvimento cognitivo e construção do conhecimento pela interação com o meio.</p>
+                <div class="video">
+                  <iframe
+                    data-youtube="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    title="Piaget - YouTube"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </article>
+
+            <article class="card topic" data-accordion data-topic>
+              <button class="topic-head" type="button">
+                <h3 class="topic-title" data-title>Lev Vygotsky</h3>
+                <span class="topic-arrow">⌄</span>
+              </button>
+              <div class="topic-body">
+                <p data-summary>Resumo breve: mediação social, linguagem e zona de desenvolvimento proximal na aprendizagem.</p>
+                <div class="video">
+                  <iframe
+                    data-youtube="https://www.youtube.com/shorts/dQw4w9WgXcQ"
+                    title="Vygotsky - YouTube"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ===================== SEÇÃO: ÁREAS ===================== -->
+        <div class="section" id="areas">
+          <h2>Áreas da Psicologia</h2>
+          <div class="grid">
+            <article class="card topic" data-accordion data-topic>
+              <button class="topic-head" type="button">
+                <h3 class="topic-title" data-title>Psicologia Clínica</h3>
+                <span class="topic-arrow">⌄</span>
+              </button>
+              <div class="topic-body">
+                <p data-summary>Resumo breve: avaliação, prevenção e intervenção em sofrimento psíquico e saúde mental.</p>
+                <div class="video">
+                  <iframe
+                    data-youtube="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    title="Psicologia Clínica - YouTube"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </article>
+
+            <article class="card topic" data-accordion data-topic>
+              <button class="topic-head" type="button">
+                <h3 class="topic-title" data-title>Psicologia Organizacional</h3>
+                <span class="topic-arrow">⌄</span>
+              </button>
+              <div class="topic-body">
+                <p data-summary>Resumo breve: comportamento no trabalho, cultura organizacional, seleção, clima e desempenho.</p>
+                <div class="video">
+                  <iframe
+                    data-youtube="https://youtu.be/dQw4w9WgXcQ"
+                    title="Psicologia Organizacional - YouTube"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ===================== SEÇÃO: CONCURSOS ===================== -->
+        <div class="section" id="concursos">
+          <h2>Psicologia para Concursos</h2>
+          <div class="grid">
+            <article class="card topic" data-accordion data-topic>
+              <button class="topic-head" type="button">
+                <h3 class="topic-title" data-title>Ética Profissional (resumo)</h3>
+                <span class="topic-arrow">⌄</span>
+              </button>
+              <div class="topic-body">
+                <p data-summary>Resumo breve: princípios, responsabilidades, sigilo profissional e atuação conforme o CFP.</p>
+                <div class="video">
+                  <iframe
+                    data-youtube="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    title="Ética - YouTube"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </article>
+
+            <article class="card topic" data-accordion data-topic>
+              <button class="topic-head" type="button">
+                <h3 class="topic-title" data-title>Aprendizagem e Memória</h3>
+                <span class="topic-arrow">⌄</span>
+              </button>
+              <div class="topic-body">
+                <p data-summary>Resumo breve: teorias principais, reforço, esquecimento, memória de trabalho e estratégias de estudo.</p>
+                <div class="video">
+                  <iframe
+                    data-youtube="https://youtu.be/dQw4w9WgXcQ"
+                    title="Aprendizagem e Memória - YouTube"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // ======================
+    // Navegação (scroll suave)
+    // ======================
+    document.querySelectorAll("[data-go]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const sel = btn.getAttribute("data-go");
+        const el = document.querySelector(sel);
+        if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+
+    // ======================
+    // Accordion (um aberto por vez)
+    // ======================
+    const accItems = Array.from(document.querySelectorAll("[data-accordion]"));
+
+    function closeAll(except){
+      accItems.forEach(item=>{
+        if(item !== except) item.classList.remove("open");
+      });
+    }
+
+    accItems.forEach(item=>{
+      const head = item.querySelector(".topic-head");
+      head?.addEventListener("click", ()=>{
+        const isOpen = item.classList.contains("open");
+        closeAll(item);
+        item.classList.toggle("open", !isOpen);
+      });
+    });
+
+    // ======================
+    // YouTube por link completo (auto-conversão)
+    // ======================
+    function toYouTubeEmbedUrl(url){
+      if(!url) return "";
+      const u = String(url).trim();
+
+      const watch = u.match(/[?&]v=([a-zA-Z0-9_-]{6,})/);
+      if(watch) return `https://www.youtube.com/embed/${watch[1]}`;
+
+      const short = u.match(/youtu\.be\/([a-zA-Z0-9_-]{6,})/);
+      if(short) return `https://www.youtube.com/embed/${short[1]}`;
+
+      const shorts = u.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{6,})/);
+      if(shorts) return `https://www.youtube.com/embed/${shorts[1]}`;
+
+      const embed = u.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/);
+      if(embed) return `https://www.youtube.com/embed/${embed[1]}`;
+
+      return "";
+    }
+
+    function initYouTubeEmbeds(){
+      const iframes = document.querySelectorAll("iframe[data-youtube]");
+      iframes.forEach(frame=>{
+        const link = frame.getAttribute("data-youtube") || "";
+        const embed = toYouTubeEmbedUrl(link);
+        if(embed) frame.src = embed;
+      });
+    }
+    initYouTubeEmbeds();
+
+    // ======================
+    // PASSO 3: BUSCA (filtra subassuntos por título/resumo)
+    // - Procura em: [data-title] e [data-summary]
+    // - Esconde os cards que não batem
+    // - Fecha accordions ao filtrar
+    // ======================
+    const searchInput = document.getElementById("searchInput");
+    const clearBtn = document.getElementById("clearSearch");
+    const topics = Array.from(document.querySelectorAll("[data-topic]"));
+    const noResults = document.getElementById("noResults");
+    const noResultsTerm = document.getElementById("noResultsTerm");
+
+    function normalizeText(s){
+      return (s || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, ""); // remove acentos
+    }
+
+    function applySearch(){
+      const termRaw = searchInput.value || "";
+      const term = normalizeText(termRaw);
+
+      let visibleCount = 0;
+
+      topics.forEach(card=>{
+        const title = normalizeText(card.querySelector("[data-title]")?.textContent || "");
+        const summary = normalizeText(card.querySelector("[data-summary]")?.textContent || "");
+        const match = !term || title.includes(term) || summary.includes(term);
+
+        card.style.display = match ? "" : "none";
+        if(match) visibleCount++;
+
+        // Ao pesquisar, fecha tudo para ficar “limpo”
+        card.classList.remove("open");
+      });
+
+      // Mostrar/ocultar aviso "nada encontrado"
+      if(term && visibleCount === 0){
+        noResults.style.display = "block";
+        noResultsTerm.textContent = termRaw.trim();
+      }else{
+        noResults.style.display = "none";
+        noResultsTerm.textContent = "";
+      }
+    }
+
+    searchInput.addEventListener("input", applySearch);
+    clearBtn.addEventListener("click", ()=>{
+      searchInput.value = "";
+      applySearch();
+      searchInput.focus();
+    });
+
+    // ======================
+    // Relógio real
+    // ======================
+    function pad2(n){ return String(n).padStart(2,"0"); }
+    function updateClock(){
+      const now = new Date();
+      const h = now.getHours();
+      const m = now.getMinutes();
+      const s = now.getSeconds();
+      const ms = now.getMilliseconds();
+
+      const secondAngle = (s + ms/1000) * 6;
+      const minuteAngle = (m + (s/60)) * 6;
+      const hourAngle = ((h%12) + (m/60)) * 30;
+
+      const hh = document.getElementById("hourHand");
+      const mm = document.getElementById("minuteHand");
+      const ss = document.getElementById("secondHand");
+      if(hh) hh.style.transform = `translate(-50%,-100%) rotate(${hourAngle}deg)`;
+      if(mm) mm.style.transform = `translate(-50%,-100%) rotate(${minuteAngle}deg)`;
+      if(ss) ss.style.transform = `translate(-50%,-100%) rotate(${secondAngle}deg)`;
+
+      const txt = document.getElementById("nowText");
+      if(txt) txt.textContent = `${pad2(h)}:${pad2(m)}:${pad2(s)}`;
+    }
+    updateClock();
+    setInterval(updateClock, 50);
+  </script>
+</body>
+</html>
