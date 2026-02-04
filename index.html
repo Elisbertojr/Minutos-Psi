@@ -4,22 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="google-site-verification" content="dkyL-bJCDXGVf_WHJt9CkuhL_B3-DHw7hd07QLXJ6wk" />
+
   <title>Minutos Psi</title>
   <meta name="description" content="Minutos Psi: resumos claros de psicologia, abordagens, teóricos, áreas e psicologia para concursos com vídeos explicativos." />
-
   <meta name="keywords" content="psicologia, abordagens da psicologia, teóricos da psicologia, psicologia para concursos, psicologia clínica, psicologia organizacional" />
-
   <meta name="author" content="Minutos Psi" />
-
   <meta name="robots" content="index, follow" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- SEO Social -->
+  <meta property="og:title" content="Minutos Psi | Psicologia em minutos" />
+  <meta property="og:description" content="Conteúdos organizados de psicologia com resumos e vídeos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
 
-<!-- SEO Social (opcional mas recomendado) -->
-<meta property="og:title" content="Minutos Psi | Psicologia em minutos" />
-<meta property="og:description" content="Conteúdos organizados de psicologia com resumos e vídeos." />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="pt_BR" />
+  <!-- ✅ YouTube IFrame API (necessário para auto-próximo + modo cinema) -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
   <style>
     :root{
       --bg:#0a0c0f;
@@ -100,7 +100,7 @@
     .topbar-title{font-weight:700;color:var(--accent2);white-space:nowrap;}
     .now-text{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap;}
 
-    /* ===== PASSO 3: BUSCA ===== */
+    /* ===== BUSCA ===== */
     .search{
       display:flex;align-items:center;gap:10px;
       width:min(640px, 100%);
@@ -269,7 +269,7 @@
     .topic.open .topic-body{display:block;}
     .topic-body p{margin:0 0 10px 0;line-height:1.5;}
 
-    /* Vídeo */
+    /* Vídeo (cards) */
     .video{
       margin-top:10px;
       border-radius:18px;
@@ -291,6 +291,164 @@
     }
     .no-results strong{color: var(--accent2);}
 
+    /* =========================
+       PLAYLIST (A–Z)
+    ========================= */
+    .playlist-wrap{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap:14px;
+      align-items:start;
+    }
+    .playlist-panel{
+      padding:12px;border-radius:20px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(0,0,0,0.24);
+      box-shadow:var(--shadow);
+      min-width:0;
+    }
+    .playlist-controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .btn{
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .btn:hover{
+      border-color:var(--border);
+      background:rgba(51,214,255,0.06);
+      color:var(--accent2);
+    }
+    .playlist-search{
+      width:100%;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.04);
+      padding:10px 12px;
+      color:var(--text);
+      outline:none;
+      margin-bottom:10px;
+    }
+    .playlist-ol{
+      margin:0;
+      padding-left:20px;
+      max-height: 460px;
+      overflow:auto;
+    }
+    .playlist-ol li{margin:8px 0;}
+    .playlist-ol button{
+      width:100%;
+      text-align:left;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(0,0,0,0.18);
+      color:rgba(220,240,255,0.90);
+      padding:10px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:850;
+    }
+    .playlist-ol button:hover{
+      border-color:rgba(160,230,255,0.28);
+      background:rgba(51,214,255,0.06);
+    }
+    .playlist-ol button.active{
+      border-color:rgba(124,230,255,0.35);
+      background:rgba(124,230,255,0.10);
+    }
+
+    /* Player da API (tamanho padrão na seção Playlist) */
+    #playlistPlayer iframe{
+      width:100% !important;
+      height:300px !important;
+      display:block;
+      border:0;
+    }
+
+    /* =========================
+       MODO NETFLIX / CINEMA
+    ========================= */
+    .cinema-overlay{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:none;
+    }
+    .cinema-overlay.open{ display:block; }
+
+    .cinema-backdrop{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.72);
+      backdrop-filter: blur(10px);
+    }
+
+    .cinema-modal{
+      position:relative;
+      width:min(1100px, 92vw);
+      margin: 6vh auto;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.55);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.65);
+      overflow:hidden;
+    }
+
+    .cinema-topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .cinema-title{
+      font-weight:900;
+      color: rgba(220,240,255,0.92);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .cinema-sub{
+      color: rgba(220,240,255,0.65);
+      font-weight:800;
+      font-size: 13px;
+    }
+
+    .cinema-player{
+      margin-top:0;
+      border-radius:0;
+      border:0;
+      background: rgba(0,0,0,0.35);
+    }
+
+    #cinemaPlayerMount iframe{
+      width:100% !important;
+      height: 62vh !important;
+      min-height: 360px;
+      display:block;
+      border:0;
+    }
+
+    .cinema-controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      padding:12px 14px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+
     @media (max-width: 980px){
       .app{grid-template-columns:1fr;}
       .sidebar{position:relative;height:auto;}
@@ -300,9 +458,14 @@
       iframe{height:250px;}
       .topbar{flex-wrap:wrap;}
       .search{width:100%;}
+      .playlist-wrap{grid-template-columns:1fr;}
+      #playlistPlayer iframe{height:250px !important;}
+      .cinema-modal{ margin: 4vh auto; }
+      #cinemaPlayerMount iframe{ height: 54vh !important; }
     }
   </style>
 </head>
+
 <body>
   <div class="app">
     <aside class="sidebar">
@@ -319,11 +482,14 @@
         <button class="menu-btn" data-go="#teoricos">Teóricos da Psicologia</button>
         <button class="menu-btn" data-go="#areas">Áreas da Psicologia</button>
         <button class="menu-btn" data-go="#concursos">Psicologia para Concursos</button>
+
+        <!-- ✅ NOVO -->
+        <button class="menu-btn" data-go="#playlist">Playlist (A–Z)</button>
       </nav>
 
       <div class="hint">
         ✅ Busca ligada: digite no campo “Pesquisar” e o site filtra por título/resumo.<br><br>
-        
+        ✅ Playlist (A–Z): clique em “Iniciar Playlist” e ela segue automaticamente.
       </div>
     </aside>
 
@@ -334,7 +500,6 @@
           <div class="now-text" id="nowText">--:--:--</div>
         </div>
 
-        <!-- ===== PASSO 3: BUSCA ===== -->
         <div class="search" role="search" aria-label="Pesquisar assuntos">
           <span>⌕</span>
           <input id="searchInput" type="search" placeholder="Pesquisar por tema, teórico, resumo..." />
@@ -370,9 +535,7 @@
 
           <div class="card">
             <h1>Minutos Psi</h1>
-            <p>
-              Seu Canal de Psicologia
-            </p>
+            <p>Seu Canal de Psicologia</p>
 
             <div class="no-results" id="noResults">
               Nada encontrado para <strong id="noResultsTerm"></strong>.
@@ -384,22 +547,11 @@
 
       <section class="sections">
 
-        <!-- ============================================================
-          ✅ COMO ADICIONAR SUBASSUNTOS NOVOS
-          1) Vá até a seção desejada (ex.: id="abordagens")
-          2) Dentro do <div class="grid"> ... </div> cole um “CARD DE SUBASSUNTO”
-          3) EDITE APENAS:
-             - Título: <h3 class="topic-title"> ... </h3>
-             - Resumo: <p data-summary> ... </p>
-             - Link YouTube completo: data-youtube="COLE_AQUI"
-        ============================================================ -->
-
         <!-- ===================== SEÇÃO: ABORDAGENS ===================== -->
         <div class="section" id="abordagens">
           <h2>Abordagens da Psicologia</h2>
           <div class="grid">
 
-            <!-- ===================== CARD DE SUBASSUNTO (COPIE ESTE BLOCO) ===================== -->
             <article class="card topic" data-accordion data-topic>
               <button class="topic-head" type="button">
                 <h3 class="topic-title" data-title>Behaviorismo</h3>
@@ -413,14 +565,12 @@
                     title="Behaviorismo - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
-            <!-- ===================== FIM DO CARD (COPIE ATÉ AQUI) ===================== -->
 
-           <article class="card topic" data-accordion data-topic>
+            <article class="card topic" data-accordion data-topic>
               <button class="topic-head" type="button">
                 <h3 class="topic-title" data-title>Teoria Cognitiva Comportamental (TCC)</h3>
                 <span class="topic-arrow">⌄</span>
@@ -430,17 +580,14 @@
                 <div class="video">
                   <iframe
                     data-youtube="https://youtu.be/yCbKRAsddsk"
-                    title="Teoria Cognitiva Comportamental (TCC) - YouTube"
+                    title="TCC - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
 
-            <!-- --->
-            
             <article class="card topic" data-accordion data-topic>
               <button class="topic-head" type="button">
                 <h3 class="topic-title" data-title>Psicanálise</h3>
@@ -454,8 +601,7 @@
                     title="Psicanálise - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -480,8 +626,7 @@
                     title="Piaget - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -499,8 +644,7 @@
                     title="Vygotsky - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -524,8 +668,7 @@
                     title="Psicologia Clínica - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -543,8 +686,7 @@
                     title="Psicologia Organizacional - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -568,8 +710,7 @@
                     title="Ética - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -584,19 +725,79 @@
                 <div class="video">
                   <iframe
                     data-youtube="https://youtu.be/Nn_SWiGSOsA"
-                    title="Questões Comentadas para concurso - YouTube"
+                    title="Questões comentadas - YouTube"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                  </iframe>
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </article>
           </div>
         </div>
 
+        <!-- ===================== NOVO: PLAYLIST (A–Z) ===================== -->
+        <div class="section" id="playlist">
+          <h2>Playlist do site (A–Z)</h2>
+
+          <div class="playlist-wrap">
+            <div class="playlist-panel">
+              <p style="margin:0 0 10px 0;color:var(--muted);line-height:1.5;">
+                Clique em <strong>Iniciar Playlist</strong> (isso libera autoplay no navegador).
+                Depois, quando o vídeo acabar, toca o próximo automaticamente. Use <strong>Modo Cinema</strong> para tela grande.
+              </p>
+
+              <div class="playlist-controls">
+                <button class="btn" id="startPlaylist" type="button">▶ Iniciar Playlist</button>
+                <button class="btn" id="openCinema" type="button">🍿 Modo Cinema</button>
+                <button class="btn" id="plPrev" type="button">⟵ Anterior</button>
+                <button class="btn" id="plNext" type="button">Próximo ⟶</button>
+              </div>
+
+              <!-- ✅ “Casa” do player (o #playlistPlayer volta pra cá ao fechar o cinema) -->
+              <div class="video" id="playlistPlayerHome">
+                <div id="playlistPlayer"></div>
+              </div>
+
+              <div style="margin-top:10px;color:var(--muted);" id="plNowPlaying"></div>
+            </div>
+
+            <div class="playlist-panel">
+              <input id="playlistSearch" class="playlist-search" type="search" placeholder="Filtrar títulos na playlist..." />
+              <div id="playlistCount" style="color:var(--muted);margin:0 0 10px 0;"></div>
+              <ol id="playlistOl" class="playlist-ol"></ol>
+            </div>
+          </div>
+        </div>
+
       </section>
     </main>
+  </div>
+
+  <!-- =========================
+    MODO NETFLIX / CINEMA (MODAL)
+    - O player é movido pra cá quando abre o modo cinema
+  ========================== -->
+  <div id="cinemaOverlay" class="cinema-overlay" aria-hidden="true">
+    <div class="cinema-backdrop" data-cinema-close></div>
+
+    <div class="cinema-modal" role="dialog" aria-modal="true" aria-label="Modo Cinema">
+      <div class="cinema-topbar">
+        <div class="cinema-title">
+          🎬 Modo Cinema
+          <span class="cinema-sub" id="cinemaNow">—</span>
+        </div>
+        <button class="btn" id="cinemaClose" type="button" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="cinema-player video">
+        <div id="cinemaPlayerMount"></div>
+      </div>
+
+      <div class="cinema-controls">
+        <button class="btn" id="cinemaPrev" type="button">⟵ Anterior</button>
+        <button class="btn" id="cinemaNext" type="button">Próximo ⟶</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -615,13 +816,11 @@
     // Accordion (um aberto por vez)
     // ======================
     const accItems = Array.from(document.querySelectorAll("[data-accordion]"));
-
     function closeAll(except){
       accItems.forEach(item=>{
         if(item !== except) item.classList.remove("open");
       });
     }
-
     accItems.forEach(item=>{
       const head = item.querySelector(".topic-head");
       head?.addEventListener("click", ()=>{
@@ -632,7 +831,7 @@
     });
 
     // ======================
-    // YouTube por link completo (auto-conversão)
+    // YouTube nos CARDS (auto-conversão do link completo)
     // ======================
     function toYouTubeEmbedUrl(url){
       if(!url) return "";
@@ -664,10 +863,7 @@
     initYouTubeEmbeds();
 
     // ======================
-    // PASSO 3: BUSCA (filtra subassuntos por título/resumo)
-    // - Procura em: [data-title] e [data-summary]
-    // - Esconde os cards que não batem
-    // - Fecha accordions ao filtrar
+    // BUSCA (filtra subassuntos por título/resumo)
     // ======================
     const searchInput = document.getElementById("searchInput");
     const clearBtn = document.getElementById("clearSearch");
@@ -679,7 +875,7 @@
       return (s || "")
         .toLowerCase()
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, ""); // remove acentos
+        .replace(/[\u0300-\u036f]/g, "");
     }
 
     function applySearch(){
@@ -696,11 +892,9 @@
         card.style.display = match ? "" : "none";
         if(match) visibleCount++;
 
-        // Ao pesquisar, fecha tudo para ficar “limpo”
         card.classList.remove("open");
       });
 
-      // Mostrar/ocultar aviso "nada encontrado"
       if(term && visibleCount === 0){
         noResults.style.display = "block";
         noResultsTerm.textContent = termRaw.trim();
@@ -744,16 +938,252 @@
     }
     updateClock();
     setInterval(updateClock, 50);
+
+    // =========================================================
+    // PLAYLIST (A–Z) + AUTO-PRÓXIMO + MODO CINEMA (YouTube API)
+    // =========================================================
+
+    // ✅ importante: autoplay confiável só depois de 1 clique do usuário
+    let userStartedPlaylist = false;
+
+    function getYouTubeId(url){
+      if(!url) return "";
+      const u = String(url).trim();
+
+      const watch = u.match(/[?&]v=([a-zA-Z0-9_-]{6,})/);
+      if(watch) return watch[1];
+
+      const short = u.match(/youtu\.be\/([a-zA-Z0-9_-]{6,})/);
+      if(short) return short[1];
+
+      const shorts = u.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{6,})/);
+      if(shorts) return shorts[1];
+
+      const embed = u.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/);
+      if(embed) return embed[1];
+
+      return "";
+    }
+
+    function collectPlaylistFromIframes(){
+      const list = [];
+      document.querySelectorAll("iframe[data-youtube]").forEach((frame)=>{
+        const link = frame.getAttribute("data-youtube") || "";
+        const id = getYouTubeId(link);
+        if(!id) return;
+
+        const title =
+          frame.closest("[data-topic]")?.querySelector("[data-title]")?.textContent?.trim()
+          || "Vídeo sem título";
+
+        list.push({ title, videoId: id });
+      });
+
+      // remove duplicados por videoId
+      const unique = [];
+      const seen = new Set();
+      for(const v of list){
+        if(seen.has(v.videoId)) continue;
+        seen.add(v.videoId);
+        unique.push(v);
+      }
+      return unique;
+    }
+
+    let playlistData = [];
+    let playlistIndex = 0;
+
+    // YouTube Player API
+    let ytPlayer = null;
+    let ytApiReady = false;
+    let playlistReady = false;
+
+    // Cinema refs
+    const overlay = document.getElementById("cinemaOverlay");
+    const cinemaClose = document.getElementById("cinemaClose");
+    const openCinemaBtn = document.getElementById("openCinema");
+    const cinemaNow = document.getElementById("cinemaNow");
+    const cinemaMount = document.getElementById("cinemaPlayerMount");
+    const playerHome = document.getElementById("playlistPlayerHome");
+
+    function updateCinemaTitle(title){
+      if(cinemaNow) cinemaNow.textContent = title ? `— ${title}` : "—";
+    }
+
+    function setActivePlaylistButton(activeTitle){
+      document.querySelectorAll("#playlistOl button").forEach(b=>{
+        b.classList.toggle("active", b.textContent === activeTitle);
+      });
+    }
+
+    function updateNowPlaying(title){
+      const now = document.getElementById("plNowPlaying");
+      if(now) now.innerHTML = `Tocando agora: <strong>${title}</strong>`;
+      setActivePlaylistButton(title);
+      updateCinemaTitle(title);
+    }
+
+    function playPlaylistByIndex(i){
+      if(!playlistData.length) return;
+
+      playlistIndex = (i + playlistData.length) % playlistData.length;
+      const item = playlistData[playlistIndex];
+      updateNowPlaying(item.title);
+
+      if(ytPlayer && typeof ytPlayer.loadVideoById === "function"){
+        ytPlayer.loadVideoById(item.videoId);
+      }
+    }
+
+    function nextPlaylist(){ playPlaylistByIndex(playlistIndex + 1); }
+    function prevPlaylist(){ playPlaylistByIndex(playlistIndex - 1); }
+
+    function renderPlaylist(listToRender){
+      const ol = document.getElementById("playlistOl");
+      const count = document.getElementById("playlistCount");
+      if(!ol || !count) return;
+
+      ol.innerHTML = "";
+      count.textContent = `${listToRender.length} vídeo(s) na playlist`;
+
+      listToRender.forEach((item)=>{
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = item.title;
+
+        btn.addEventListener("click", ()=>{
+          userStartedPlaylist = true; // clique = libera autoplay
+          const realIndex = playlistData.findIndex(x => x.videoId === item.videoId);
+          playPlaylistByIndex(realIndex >= 0 ? realIndex : 0);
+        });
+
+        li.appendChild(btn);
+        ol.appendChild(li);
+      });
+    }
+
+    function createPlaylistPlayer(firstVideoId){
+      ytPlayer = new YT.Player("playlistPlayer", {
+        width: "100%",
+        height: "300",
+        videoId: firstVideoId || "",
+        playerVars: { autoplay: 0, rel: 0, modestbranding: 1 },
+        events: {
+          onReady: () => {
+            // mostra título do primeiro (parado)
+            if(playlistData.length) updateNowPlaying(playlistData[0].title);
+          },
+          onStateChange: (event) => {
+            // ✅ Auto-próximo SOMENTE após clique do usuário
+            if(event.data === YT.PlayerState.ENDED && userStartedPlaylist){
+              nextPlaylist();
+            }
+          }
+        }
+      });
+    }
+
+    // Chamado automaticamente pela API do YouTube
+    window.onYouTubeIframeAPIReady = function(){
+      ytApiReady = true;
+      if(playlistReady && !ytPlayer){
+        if(playlistData.length) createPlaylistPlayer(playlistData[0].videoId);
+        else createPlaylistPlayer("");
+      }
+    };
+
+    function initPlaylistAZ(){
+      playlistData = collectPlaylistFromIframes()
+        .sort((a,b)=> normalizeText(a.title).localeCompare(normalizeText(b.title)));
+
+      renderPlaylist(playlistData);
+      playlistReady = true;
+
+      // botões
+      document.getElementById("plNext")?.addEventListener("click", ()=>{
+        userStartedPlaylist = true;
+        nextPlaylist();
+      });
+      document.getElementById("plPrev")?.addEventListener("click", ()=>{
+        userStartedPlaylist = true;
+        prevPlaylist();
+      });
+
+      document.getElementById("startPlaylist")?.addEventListener("click", ()=>{
+        if(!playlistData.length) return;
+        userStartedPlaylist = true;
+        playPlaylistByIndex(0);
+      });
+
+      const plSearch = document.getElementById("playlistSearch");
+      plSearch?.addEventListener("input", ()=>{
+        const t = normalizeText(plSearch.value);
+        const filtered = !t ? playlistData : playlistData.filter(v => normalizeText(v.title).includes(t));
+        renderPlaylist(filtered);
+      });
+
+      // Se API já carregou antes
+      if(ytApiReady && !ytPlayer){
+        if(playlistData.length) createPlaylistPlayer(playlistData[0].videoId);
+        else createPlaylistPlayer("");
+      }
+    }
+
+    initPlaylistAZ();
+
+    // ======================
+    // MODO CINEMA / NETFLIX
+    // ======================
+    function openCinema(){
+      if(!overlay || !cinemaMount) return;
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      // move o player para o modal
+      const playerDiv = document.getElementById("playlistPlayer");
+      if(playerDiv) cinemaMount.appendChild(playerDiv);
+
+      // atualiza label
+      if(playlistData.length){
+        updateCinemaTitle(playlistData[playlistIndex]?.title || "");
+      }
+    }
+
+    function closeCinema(){
+      if(!overlay) return;
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+
+      // devolve o player para a “casa”
+      const playerDiv = document.getElementById("playlistPlayer");
+      if(playerDiv && playerHome){
+        playerHome.appendChild(playerDiv);
+      }
+    }
+
+    openCinemaBtn?.addEventListener("click", openCinema);
+    cinemaClose?.addEventListener("click", closeCinema);
+
+    overlay?.addEventListener("click", (e) => {
+      if(e.target && e.target.matches("[data-cinema-close]")) closeCinema();
+    });
+
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape" && overlay?.classList.contains("open")) closeCinema();
+    });
+
+    document.getElementById("cinemaNext")?.addEventListener("click", ()=>{
+      userStartedPlaylist = true;
+      nextPlaylist();
+    });
+    document.getElementById("cinemaPrev")?.addEventListener("click", ()=>{
+      userStartedPlaylist = true;
+      prevPlaylist();
+    });
   </script>
 </body>
-  <!--Elisberto Gonçalves-->
+<!--Elisberto Gonçalves-->
 </html>
-
-
-
-
-
-
-
-
-
