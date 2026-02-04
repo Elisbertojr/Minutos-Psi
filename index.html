@@ -17,8 +17,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
 
-  <!-- ✅ YouTube IFrame API (necessário para auto-próximo + modo cinema) -->
-  <script src="https://www.youtube.com/iframe_api"></script>
+  
 
   <style>
     :root{
@@ -1173,7 +1172,26 @@
       userStartedPlaylist = true;
       prevPlaylist();
     });
+
+    // ======================
+// CARREGAR YouTube API (evita bug de carregar antes do callback)
+// ======================
+function loadYouTubeAPI(){
+  // se já existe, inicializa direto
+  if (window.YT && window.YT.Player){
+    window.onYouTubeIframeAPIReady();
+    return;
+  }
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
+}
+
+// chama o loader depois que tudo do HTML já existe
+loadYouTubeAPI();
+
   </script>
 </body>
 <!--Elisberto Gonçalves-->
 </html>
+
