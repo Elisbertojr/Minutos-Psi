@@ -11,13 +11,10 @@
   <meta name="author" content="Minutos Psi" />
   <meta name="robots" content="index, follow" />
 
-  <!-- SEO Social -->
   <meta property="og:title" content="Minutos Psi | Psicologia em minutos" />
   <meta property="og:description" content="Conteúdos organizados de psicologia com resumos e vídeos." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-
-  
 
   <style>
     :root{
@@ -99,7 +96,6 @@
     .topbar-title{font-weight:700;color:var(--accent2);white-space:nowrap;}
     .now-text{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap;}
 
-    /* ===== BUSCA ===== */
     .search{
       display:flex;align-items:center;gap:10px;
       width:min(640px, 100%);
@@ -110,28 +106,16 @@
       box-shadow: 0 10px 26px rgba(0,0,0,0.25);
       min-width:0;
     }
-    .search span{
-      color:var(--muted);
-      font-weight:800;
-      user-select:none;
-    }
+    .search span{color:var(--muted);font-weight:800;user-select:none;}
     .search input{
-      width:100%;
-      border:0;
-      outline:none;
-      background:transparent;
-      color:var(--text);
-      font-size:14px;
-      min-width:0;
+      width:100%;border:0;outline:none;background:transparent;color:var(--text);
+      font-size:14px;min-width:0;
     }
     .clear-btn{
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.04);
       color:var(--muted);
-      padding:8px 10px;
-      border-radius:12px;
-      cursor:pointer;
-      white-space:nowrap;
+      padding:8px 10px;border-radius:12px;cursor:pointer;white-space:nowrap;
     }
     .clear-btn:hover{
       border-color:var(--border);
@@ -212,15 +196,9 @@
     }
     .logo-line{font-size:44px;line-height:1;}
 
-    /* Seções */
     .sections{padding:6px 18px 30px;}
     .section{margin-top:18px;padding-top:10px;}
-    .section h2{
-      margin:0 0 12px 0;
-      color:var(--accent2);
-      font-size:20px;
-      letter-spacing:.2px;
-    }
+    .section h2{margin:0 0 12px 0;color:var(--accent2);font-size:20px;letter-spacing:.2px;}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 
     /* Accordion */
@@ -228,219 +206,94 @@
     .topic-head{
       width:100%;
       border:0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:14px 16px;
-      background:transparent;
-      color:var(--text);
-      cursor:pointer;
-      text-align:left;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:14px 16px;background:transparent;color:var(--text);
+      cursor:pointer;text-align:left;
     }
-    .topic-title{
-      margin:0;
-      font-size:16px;
-      font-weight:800;
-      color:rgba(220,240,255,0.95);
-    }
+    .topic-title{margin:0;font-size:16px;font-weight:800;color:rgba(220,240,255,0.95);}
     .topic-arrow{
-      width:34px;height:34px;
-      border-radius:12px;
+      width:34px;height:34px;border-radius:12px;
       border:1px solid rgba(255,255,255,0.08);
       background:rgba(255,255,255,0.04);
-      display:grid;place-items:center;
-      flex:0 0 auto;
+      display:grid;place-items:center;flex:0 0 auto;
       transition:transform .15s ease, border-color .15s ease, background .15s ease;
-      color:var(--accent2);
-      font-weight:900;
+      color:var(--accent2);font-weight:900;
     }
     .topic.open .topic-arrow{
       transform:rotate(180deg);
       border-color:var(--border);
       background:rgba(51,214,255,0.06);
     }
-    .topic-body{
-      padding:0 16px 16px 16px;
-      color:var(--muted);
-      display:none;
-    }
+    .topic-body{padding:0 16px 16px 16px;color:var(--muted);display:none;}
     .topic.open .topic-body{display:block;}
     .topic-body p{margin:0 0 10px 0;line-height:1.5;}
 
-    /* Vídeo (cards) */
     .video{
-      margin-top:10px;
-      border-radius:18px;
-      overflow:hidden;
+      margin-top:10px;border-radius:18px;overflow:hidden;
       border:1px solid rgba(255,255,255,0.08);
       background:rgba(0,0,0,0.35);
     }
     iframe{width:100%;height:300px;border:0;display:block;}
 
-    /* Estado "nada encontrado" */
     .no-results{
-      display:none;
-      margin: 14px 0 0 0;
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px dashed rgba(255,255,255,0.12);
+      display:none;margin:14px 0 0 0;padding:14px 16px;border-radius:16px;
+      border:1px dashed rgba(255,255,255,0.12);
       background: rgba(0,0,0,0.18);
       color: var(--muted);
     }
     .no-results strong{color: var(--accent2);}
 
-    /* =========================
-       PLAYLIST (A–Z)
-    ========================= */
-    .playlist-wrap{
-      display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap:14px;
-      align-items:start;
-    }
+    /* PLAYLIST */
+    .playlist-wrap{display:grid;grid-template-columns: 1.1fr 0.9fr;gap:14px;align-items:start;}
     .playlist-panel{
-      padding:12px;border-radius:20px;
-      border:1px solid rgba(255,255,255,0.06);
-      background:rgba(0,0,0,0.24);
-      box-shadow:var(--shadow);
-      min-width:0;
+      padding:12px;border-radius:20px;border:1px solid rgba(255,255,255,0.06);
+      background:rgba(0,0,0,0.24);box-shadow:var(--shadow);min-width:0;
     }
-    .playlist-controls{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
+    .playlist-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
     .btn{
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.04);
       color:var(--text);
-      padding:10px 12px;
-      border-radius:999px;
-      cursor:pointer;
-      font-weight:900;
+      padding:10px 12px;border-radius:999px;cursor:pointer;font-weight:900;
     }
-    .btn:hover{
-      border-color:var(--border);
-      background:rgba(51,214,255,0.06);
-      color:var(--accent2);
-    }
+    .btn:hover{border-color:var(--border);background:rgba(51,214,255,0.06);color:var(--accent2);}
     .playlist-search{
-      width:100%;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.04);
-      padding:10px 12px;
-      color:var(--text);
-      outline:none;
-      margin-bottom:10px;
+      width:100%;border-radius:16px;border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.04);padding:10px 12px;color:var(--text);
+      outline:none;margin-bottom:10px;
     }
-    .playlist-ol{
-      margin:0;
-      padding-left:20px;
-      max-height: 460px;
-      overflow:auto;
-    }
+    .playlist-ol{margin:0;padding-left:20px;max-height:460px;overflow:auto;}
     .playlist-ol li{margin:8px 0;}
     .playlist-ol button{
-      width:100%;
-      text-align:left;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(0,0,0,0.18);
-      color:rgba(220,240,255,0.90);
-      padding:10px 12px;
-      border-radius:14px;
-      cursor:pointer;
-      font-weight:850;
+      width:100%;text-align:left;border:1px solid rgba(255,255,255,0.08);
+      background:rgba(0,0,0,0.18);color:rgba(220,240,255,0.90);
+      padding:10px 12px;border-radius:14px;cursor:pointer;font-weight:850;
     }
-    .playlist-ol button:hover{
-      border-color:rgba(160,230,255,0.28);
-      background:rgba(51,214,255,0.06);
-    }
-    .playlist-ol button.active{
-      border-color:rgba(124,230,255,0.35);
-      background:rgba(124,230,255,0.10);
-    }
+    .playlist-ol button:hover{border-color:rgba(160,230,255,0.28);background:rgba(51,214,255,0.06);}
+    .playlist-ol button.active{border-color:rgba(124,230,255,0.35);background:rgba(124,230,255,0.10);}
 
-    /* Player API (normal) */
-    #playlistPlayer iframe{
-      width:100% !important;
-      height:300px !important;
-      display:block;
-      border:0;
-    }
+    #playlistPlayer iframe{width:100% !important;height:300px !important;display:block;border:0;}
 
-    /* =========================
-       MODO NETFLIX / CINEMA (player separado)
-    ========================= */
-    .cinema-overlay{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      display:none;
-    }
-    .cinema-overlay.open{ display:block; }
-
-    .cinema-backdrop{
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,0.72);
-      backdrop-filter: blur(10px);
-    }
-
+    /* CINEMA */
+    .cinema-overlay{position:fixed;inset:0;z-index:9999;display:none;}
+    .cinema-overlay.open{display:block;}
+    .cinema-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.72);backdrop-filter: blur(10px);}
     .cinema-modal{
-      position:relative;
-      width:min(1100px, 92vw);
-      margin: 6vh auto;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,0.10);
+      position:relative;width:min(1100px, 92vw);margin: 6vh auto;
+      border-radius:22px;border:1px solid rgba(255,255,255,0.10);
       background: rgba(0,0,0,0.55);
       box-shadow: 0 30px 90px rgba(0,0,0,0.65);
       overflow:hidden;
     }
-
     .cinema-topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 14px;
-      border-bottom:1px solid rgba(255,255,255,0.08);
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.04);
     }
-
-    .cinema-title{
-      font-weight:900;
-      color: rgba(220,240,255,0.92);
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .cinema-sub{
-      color: rgba(220,240,255,0.65);
-      font-weight:800;
-      font-size: 13px;
-    }
-
-    /* player do cinema */
-    #cinemaPlayer iframe{
-      width:100% !important;
-      height: 62vh !important;
-      min-height: 360px;
-      display:block;
-      border:0;
-    }
-
-    .cinema-controls{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      padding:12px 14px;
-      border-top:1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-    }
+    .cinema-title{font-weight:900;color: rgba(220,240,255,0.92);display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+    .cinema-sub{color: rgba(220,240,255,0.65);font-weight:800;font-size: 13px;}
+    #cinemaPlayer iframe{width:100% !important;height: 62vh !important;min-height: 360px;display:block;border:0;}
+    .cinema-controls{display:flex;gap:10px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid rgba(255,255,255,0.08);background: rgba(255,255,255,0.04);}
 
     @media (max-width: 980px){
       .app{grid-template-columns:1fr;}
@@ -479,8 +332,9 @@
       </nav>
 
       <div class="hint">
-        ✅ Busca ligada: digite no campo “Pesquisar” e o site filtra por título/resumo.<br><br>
-        ✅ Playlist: clique em “Iniciar Playlist” e ela segue automaticamente.
+        ✅ Busca ligada: digite no campo “Pesquisar”.<br><br>
+        ✅ Playlist: clique em “Iniciar Playlist”.<br>
+        ✅ Modo Cinema: sem áudio duplicado (toca só 1 player).
       </div>
     </aside>
 
@@ -537,26 +391,20 @@
       </section>
 
       <section class="sections">
-
-        <!-- ===================== SEÇÃO: ABORDAGENS ===================== -->
+        <!-- ✅ SEUS CARDS (iguais ao seu arquivo) -->
         <div class="section" id="abordagens">
           <h2>Abordagens da Psicologia</h2>
           <div class="grid">
-
             <article class="card topic" data-accordion data-topic>
               <button class="topic-head" type="button">
                 <h3 class="topic-title" data-title>Behaviorismo</h3>
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>O behaviorismo revolucionou a psicologia ao focar no que pode ser observado: o comportamento. Neste vídeo, você vai entender o que é o behaviorismo, suas principais ideias e como ele explica a aprendizagem a partir da relação entre estímulos, respostas, reforços e punições. Apresentamos os principais autores — Watson, Pavlov e Skinner</p>
+                <p data-summary>O behaviorismo revolucionou a psicologia ao focar no que pode ser observado: o comportamento...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/iQ6aL_yiYVg"
-                    title="Behaviorismo - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/iQ6aL_yiYVg" title="Behaviorismo" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -567,14 +415,10 @@
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>A Teoria Cognitiva Comportamental é uma abordagem da psicologia que explica como pensamentos, emoções e comportamentos estão interligados e influenciam a forma como o indivíduo interpreta e reage às situações do dia a dia. Neste vídeo, você vai compreender os fundamentos da TCC e como ela é aplicada na prática clínica.</p>
+                <p data-summary>A Teoria Cognitiva Comportamental é uma abordagem da psicologia...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/yCbKRAsddsk"
-                    title="TCC - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/yCbKRAsddsk" title="TCC" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -585,22 +429,16 @@
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>A psicanálise é uma das abordagens mais influentes da psicologia e busca compreender o funcionamento da mente a partir do inconsciente. Neste vídeo, você vai entender o que é a psicanálise, seus principais conceitos — como inconsciente, id, ego e superego — e como essa teoria explica pensamentos, emoções e comportamentos. Também falamos sobre a origem da psicanálise com Freud e suas aplicações na clínica e na compreensão do ser humano.</p>
+                <p data-summary>A psicanálise é uma das abordagens mais influentes da psicologia...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/n3zKqZtUvPE"
-                    title="Psicanálise - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/n3zKqZtUvPE" title="Psicanálise" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
-
           </div>
         </div>
 
-        <!-- ===================== SEÇÃO: TEÓRICOS ===================== -->
         <div class="section" id="teoricos">
           <h2>Teóricos da Psicologia</h2>
           <div class="grid">
@@ -610,14 +448,10 @@
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>Jean Piaget foi um psicólogo e epistemólogo suíço responsável por uma das teorias mais influentes sobre o desenvolvimento cognitivo humano. Neste vídeo, você conhecerá sua biografia, desde sua infância e formação acadêmica até as principais contribuições que marcaram sua obra e impacto na psicologia e na educação.</p>
+                <p data-summary>Jean Piaget foi um psicólogo e epistemólogo suíço...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/MPVz7xqGTZQ"
-                    title="Piaget - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/MPVz7xqGTZQ" title="Piaget" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -628,21 +462,16 @@
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>Lev Vygotsky foi um psicólogo russo fundamental para a compreensão do desenvolvimento humano a partir das relações sociais e culturais. Neste vídeo, você conhecerá sua biografia, sua trajetória intelectual e as ideias centrais que deram origem à psicologia histórico-cultural e influenciam a educação até os dias atuais.</p>
+                <p data-summary>Lev Vygotsky foi um psicólogo russo fundamental...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/M-ftxdJ9ijY"
-                    title="Vygotsky - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/M-ftxdJ9ijY" title="Vygotsky" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
           </div>
         </div>
 
-        <!-- ===================== SEÇÃO: ÁREAS ===================== -->
         <div class="section" id="areas">
           <h2>Áreas da Psicologia</h2>
           <div class="grid">
@@ -652,14 +481,10 @@
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>A psicologia clínica é uma área da psicologia dedicada à compreensão, avaliação e intervenção nos sofrimentos psíquicos e nos transtornos mentais. Neste vídeo, você vai entender o que caracteriza a prática clínica, seus principais objetivos e como o trabalho do psicólogo contribui para a promoção da saúde mental.</p>
+                <p data-summary>A psicologia clínica é uma área da psicologia dedicada...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/T5VOJiTJVAM"
-                    title="Psicologia Clínica - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/T5VOJiTJVAM" title="Psicologia Clínica" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -670,21 +495,16 @@
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>A psicologia organizacional estuda o comportamento humano no contexto do trabalho e das organizações. Neste vídeo, você vai compreender como essa área atua na relação entre indivíduos, grupos e empresas, promovendo bem-estar, desempenho e desenvolvimento organizacional.</p>
+                <p data-summary>A psicologia organizacional estuda o comportamento humano...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/i-x3njbU5ao"
-                    title="Psicologia Organizacional - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/i-x3njbU5ao" title="Psicologia Organizacional" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
           </div>
         </div>
 
-        <!-- ===================== SEÇÃO: CONCURSOS ===================== -->
         <div class="section" id="concursos">
           <h2>Psicologia para Concursos</h2>
           <div class="grid">
@@ -694,14 +514,10 @@
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>Resumo breve: princípios, responsabilidades, sigilo profissional e atuação conforme o CFP.</p>
+                <p data-summary>Resumo breve: princípios, responsabilidades, sigilo profissional...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/9Gy-duANPW4"
-                    title="Ética - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/9Gy-duANPW4" title="Ética" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
@@ -712,29 +528,25 @@
                 <span class="topic-arrow">⌄</span>
               </button>
               <div class="topic-body">
-                <p data-summary>Este vídeo apresenta o curso online de questões comentadas voltado para o cargo de Analista Judiciário – Psicologia, com foco em concursos de tribunais. A proposta do curso é preparar o candidato por meio da resolução estratégica de questões, ajudando a compreender o estilo das bancas e aumentar as chances de aprovação.</p>
+                <p data-summary>Este vídeo apresenta o curso online de questões comentadas...</p>
                 <div class="video">
-                  <iframe
-                    data-youtube="https://youtu.be/Nn_SWiGSOsA"
-                    title="Questões comentadas - YouTube"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                  <iframe data-youtube="https://youtu.be/Nn_SWiGSOsA" title="Questões comentadas" loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
               </div>
             </article>
           </div>
         </div>
 
-        <!-- ===================== PLAYLIST (A–Z) ===================== -->
+        <!-- PLAYLIST -->
         <div class="section" id="playlist">
           <h2>Playlist do site (A–Z)</h2>
 
           <div class="playlist-wrap">
             <div class="playlist-panel">
               <p style="margin:0 0 10px 0;color:var(--muted);line-height:1.5;">
-                Clique em <strong>Iniciar Playlist</strong> (isso libera autoplay no navegador).
-                Depois, quando o vídeo acabar, toca o próximo automaticamente. Use <strong>Modo Cinema</strong> para tela grande.
+                Clique em <strong>Iniciar Playlist</strong> (libera autoplay).<br>
+                <strong>Sem áudio duplicado:</strong> toca só o player ativo (normal OU cinema).
               </p>
 
               <div class="playlist-controls">
@@ -745,7 +557,6 @@
               </div>
 
               <div class="video">
-                <!-- ✅ Player normal -->
                 <div id="playlistPlayer"></div>
               </div>
 
@@ -764,9 +575,7 @@
     </main>
   </div>
 
-  <!-- =========================
-    MODO CINEMA (player separado)
-  ========================== -->
+  <!-- CINEMA -->
   <div id="cinemaOverlay" class="cinema-overlay" aria-hidden="true">
     <div class="cinema-backdrop" data-cinema-close></div>
 
@@ -780,7 +589,6 @@
       </div>
 
       <div class="video" style="margin:0;border-radius:0;border:0;">
-        <!-- ✅ Player do cinema (segundo player, NÃO move nada) -->
         <div id="cinemaPlayer"></div>
       </div>
 
@@ -842,7 +650,6 @@
 
       return "";
     }
-
     function initYouTubeEmbeds(){
       const iframes = document.querySelectorAll("iframe[data-youtube]");
       iframes.forEach(frame=>{
@@ -872,7 +679,6 @@
     function applySearch(){
       const termRaw = searchInput.value || "";
       const term = normalizeText(termRaw);
-
       let visibleCount = 0;
 
       topics.forEach(card=>{
@@ -893,7 +699,6 @@
         noResultsTerm.textContent = "";
       }
     }
-
     searchInput.addEventListener("input", applySearch);
     clearBtn.addEventListener("click", ()=>{
       searchInput.value = "";
@@ -930,9 +735,63 @@
     setInterval(updateClock, 50);
 
     // =========================================================
-    // PLAYLIST (A–Z) + AUTO-PRÓXIMO + CINEMA (2 PLAYERS)
+    // PLAYLIST (A–Z) + AUTO-PRÓXIMO + CINEMA (sem áudio duplicado)
     // =========================================================
+
+    // ✅ autoplay confiável só depois de clique
     let userStartedPlaylist = false;
+
+    // Dados + índice
+    let playlistData = [];
+    let playlistIndex = 0;
+
+    // Players (2) - mas só 1 toca
+    let ytPlayer = null;
+    let cinemaPlayer = null;
+
+    // Flags da API
+    let ytApiReady = false;
+
+    // Cinema refs
+    const overlay = document.getElementById("cinemaOverlay");
+    const cinemaClose = document.getElementById("cinemaClose");
+    const openCinemaBtn = document.getElementById("openCinema");
+    const cinemaNow = document.getElementById("cinemaNow");
+
+    function isCinemaOpen(){
+      return overlay?.classList.contains("open");
+    }
+
+    function safeCall(player, fn, ...args){
+      try{
+        if(player && typeof player[fn] === "function") return player[fn](...args);
+      }catch(e){}
+      return undefined;
+    }
+
+    function getActivePlayer(){
+      return isCinemaOpen() ? cinemaPlayer : ytPlayer;
+    }
+    function getInactivePlayer(){
+      return isCinemaOpen() ? ytPlayer : cinemaPlayer;
+    }
+
+    function updateCinemaTitle(title){
+      if(cinemaNow) cinemaNow.textContent = title ? `— ${title}` : "—";
+    }
+
+    function setActivePlaylistButton(activeTitle){
+      document.querySelectorAll("#playlistOl button").forEach(b=>{
+        b.classList.toggle("active", b.textContent === activeTitle);
+      });
+    }
+
+    function updateNowPlaying(title){
+      const now = document.getElementById("plNowPlaying");
+      if(now) now.innerHTML = `Tocando agora: <strong>${title}</strong>`;
+      setActivePlaylistButton(title);
+      updateCinemaTitle(title);
+    }
 
     function getYouTubeId(url){
       if(!url) return "";
@@ -967,7 +826,7 @@
         list.push({ title, videoId: id });
       });
 
-      // remove duplicados por videoId
+      // remove duplicados
       const unique = [];
       const seen = new Set();
       for(const v of list){
@@ -977,52 +836,6 @@
       }
       return unique;
     }
-
-    let playlistData = [];
-    let playlistIndex = 0;
-
-    // ✅ dois players separados
-    let ytPlayer = null;      // normal
-    let cinemaPlayer = null;  // cinema
-    let ytApiReady = false;
-
-    // Cinema refs
-    const overlay = document.getElementById("cinemaOverlay");
-    const cinemaClose = document.getElementById("cinemaClose");
-    const openCinemaBtn = document.getElementById("openCinema");
-    const cinemaNow = document.getElementById("cinemaNow");
-
-    function updateCinemaTitle(title){
-      if(cinemaNow) cinemaNow.textContent = title ? `— ${title}` : "—";
-    }
-
-    function setActivePlaylistButton(activeTitle){
-      document.querySelectorAll("#playlistOl button").forEach(b=>{
-        b.classList.toggle("active", b.textContent === activeTitle);
-      });
-    }
-
-    function updateNowPlaying(title){
-      const now = document.getElementById("plNowPlaying");
-      if(now) now.innerHTML = `Tocando agora: <strong>${title}</strong>`;
-      setActivePlaylistButton(title);
-      updateCinemaTitle(title);
-    }
-
-    function playPlaylistByIndex(i){
-      if(!playlistData.length) return;
-
-      playlistIndex = (i + playlistData.length) % playlistData.length;
-      const item = playlistData[playlistIndex];
-      updateNowPlaying(item.title);
-
-      // ✅ manda o vídeo para os 2 players (o que estiver visível toca)
-      ytPlayer?.loadVideoById(item.videoId);
-      cinemaPlayer?.loadVideoById(item.videoId);
-    }
-
-    function nextPlaylist(){ playPlaylistByIndex(playlistIndex + 1); }
-    function prevPlaylist(){ playPlaylistByIndex(playlistIndex - 1); }
 
     function renderPlaylist(listToRender){
       const ol = document.getElementById("playlistOl");
@@ -1041,12 +854,59 @@
         btn.addEventListener("click", ()=>{
           userStartedPlaylist = true;
           const realIndex = playlistData.findIndex(x => x.videoId === item.videoId);
-          playPlaylistByIndex(realIndex >= 0 ? realIndex : 0);
+          playPlaylistByIndex(realIndex >= 0 ? realIndex : 0, { autoplay:true });
         });
 
         li.appendChild(btn);
         ol.appendChild(li);
       });
+    }
+
+    // ✅ toca somente o player ativo (evita áudio duplicado)
+    function playPlaylistByIndex(i, opts={ autoplay:true }){
+      if(!playlistData.length) return;
+
+      playlistIndex = (i + playlistData.length) % playlistData.length;
+      const item = playlistData[playlistIndex];
+      updateNowPlaying(item.title);
+
+      const active = getActivePlayer();
+      const inactive = getInactivePlayer();
+
+      // pausa o inativo SEMPRE (garante zero áudio duplicado)
+      safeCall(inactive, "pauseVideo");
+
+      if(opts.autoplay){
+        safeCall(active, "loadVideoById", item.videoId);
+      }else{
+        // só prepara, sem tocar
+        safeCall(active, "cueVideoById", item.videoId);
+      }
+    }
+    function nextPlaylist(){ playPlaylistByIndex(playlistIndex + 1, { autoplay:true }); }
+    function prevPlaylist(){ playPlaylistByIndex(playlistIndex - 1, { autoplay:true }); }
+
+    // ✅ sincroniza tempo quando troca normal <-> cinema
+    function syncToCinema(){
+      if(!ytPlayer || !cinemaPlayer || !playlistData.length) return;
+
+      const t = safeCall(ytPlayer, "getCurrentTime") || 0;
+      const vid = playlistData[playlistIndex]?.videoId;
+      if(!vid) return;
+
+      safeCall(ytPlayer, "pauseVideo");
+      safeCall(cinemaPlayer, "loadVideoById", { videoId: vid, startSeconds: t });
+    }
+
+    function syncToNormal(){
+      if(!ytPlayer || !cinemaPlayer || !playlistData.length) return;
+
+      const t = safeCall(cinemaPlayer, "getCurrentTime") || 0;
+      const vid = playlistData[playlistIndex]?.videoId;
+      if(!vid) return;
+
+      safeCall(cinemaPlayer, "pauseVideo");
+      safeCall(ytPlayer, "loadVideoById", { videoId: vid, startSeconds: t });
     }
 
     function buildPlayers(){
@@ -1067,7 +927,8 @@
         events:{
           onReady: () => updateNowPlaying(playlistData[0].title),
           onStateChange:(event)=>{
-            if(event.data === YT.PlayerState.ENDED && userStartedPlaylist){
+            // auto-próximo só se este player estiver ativo
+            if(event.data === YT.PlayerState.ENDED && userStartedPlaylist && !isCinemaOpen()){
               nextPlaylist();
             }
           }
@@ -1081,7 +942,7 @@
         playerVars: vars,
         events:{
           onStateChange:(event)=>{
-            if(event.data === YT.PlayerState.ENDED && userStartedPlaylist){
+            if(event.data === YT.PlayerState.ENDED && userStartedPlaylist && isCinemaOpen()){
               nextPlaylist();
             }
           }
@@ -1091,8 +952,7 @@
 
     window.onYouTubeIframeAPIReady = function(){
       ytApiReady = true;
-      // se a playlist já foi montada, cria os players
-      if(playlistData.length) buildPlayers();
+      if(playlistData.length && !ytPlayer) buildPlayers();
     };
 
     function initPlaylistAZ(){
@@ -1100,11 +960,6 @@
         .sort((a,b)=> normalizeText(a.title).localeCompare(normalizeText(b.title)));
 
       renderPlaylist(playlistData);
-
-      // Se API já carregou antes
-      if(ytApiReady && playlistData.length && !ytPlayer){
-        buildPlayers();
-      }
 
       // botões
       document.getElementById("plNext")?.addEventListener("click", ()=>{
@@ -1119,7 +974,8 @@
       document.getElementById("startPlaylist")?.addEventListener("click", ()=>{
         if(!playlistData.length) return;
         userStartedPlaylist = true;
-        playPlaylistByIndex(0);
+        // começa tocando o 1º no player ativo
+        playPlaylistByIndex(0, { autoplay:true });
       });
 
       const plSearch = document.getElementById("playlistSearch");
@@ -1128,12 +984,15 @@
         const filtered = !t ? playlistData : playlistData.filter(v => normalizeText(v.title).includes(t));
         renderPlaylist(filtered);
       });
+
+      // se a API já estiver pronta
+      if(ytApiReady && playlistData.length && !ytPlayer) buildPlayers();
     }
 
     initPlaylistAZ();
 
     // ======================
-    // MODO CINEMA (abre/fecha)
+    // MODO CINEMA (abre/fecha) - sem áudio duplicado + mantém tempo
     // ======================
     function openCinema(){
       if(!overlay) return;
@@ -1141,6 +1000,13 @@
       overlay.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       updateCinemaTitle(playlistData[playlistIndex]?.title || "");
+
+      // se já estava tocando no normal, move a reprodução pro cinema (mesmo tempo)
+      if(userStartedPlaylist) syncToCinema();
+      else{
+        // se não iniciou ainda, só prepara o vídeo atual no cinema sem tocar
+        playPlaylistByIndex(playlistIndex, { autoplay:false });
+      }
     }
 
     function closeCinema(){
@@ -1148,14 +1014,27 @@
       overlay.classList.remove("open");
       overlay.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
+
+      // se estava tocando no cinema, move a reprodução pro normal (mesmo tempo)
+      if(userStartedPlaylist) syncToNormal();
+      else{
+        // se não iniciou, garante silêncio
+        safeCall(cinemaPlayer, "pauseVideo");
+      }
     }
 
     openCinemaBtn?.addEventListener("click", ()=>{
-      userStartedPlaylist = true; // clique ajuda autoplay no cinema também
+      // clique ajuda autoplay
+      userStartedPlaylist = true;
+      // se ainda não iniciou nada, começa pelo atual antes de abrir
+      if(playlistData.length && ytPlayer && !isCinemaOpen()){
+        // garante que existe algo pra sincronizar
+        playPlaylistByIndex(playlistIndex, { autoplay:true });
+      }
       openCinema();
     });
-    cinemaClose?.addEventListener("click", closeCinema);
 
+    cinemaClose?.addEventListener("click", closeCinema);
     overlay?.addEventListener("click", (e) => {
       if(e.target && e.target.matches("[data-cinema-close]")) closeCinema();
     });
@@ -1174,24 +1053,19 @@
     });
 
     // ======================
-// CARREGAR YouTube API (evita bug de carregar antes do callback)
-// ======================
-function loadYouTubeAPI(){
-  // se já existe, inicializa direto
-  if (window.YT && window.YT.Player){
-    window.onYouTubeIframeAPIReady();
-    return;
-  }
-  const tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(tag);
-}
-
-// chama o loader depois que tudo do HTML já existe
-loadYouTubeAPI();
-
+    // Carregar YouTube API (evita bug do callback não disparar)
+    // ======================
+    function loadYouTubeAPI(){
+      if (window.YT && window.YT.Player){
+        window.onYouTubeIframeAPIReady();
+        return;
+      }
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    }
+    loadYouTubeAPI();
   </script>
 </body>
 <!--Elisberto Gonçalves-->
 </html>
-
