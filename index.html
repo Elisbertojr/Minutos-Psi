@@ -364,7 +364,7 @@
       background:rgba(124,230,255,0.10);
     }
 
-    /* Player da API (tamanho padrão na seção Playlist) */
+    /* Player API (normal) */
     #playlistPlayer iframe{
       width:100% !important;
       height:300px !important;
@@ -373,7 +373,7 @@
     }
 
     /* =========================
-       MODO NETFLIX / CINEMA
+       MODO NETFLIX / CINEMA (player separado)
     ========================= */
     .cinema-overlay{
       position:fixed;
@@ -425,14 +425,8 @@
       font-size: 13px;
     }
 
-    .cinema-player{
-      margin-top:0;
-      border-radius:0;
-      border:0;
-      background: rgba(0,0,0,0.35);
-    }
-
-    #cinemaPlayerMount iframe{
+    /* player do cinema */
+    #cinemaPlayer iframe{
       width:100% !important;
       height: 62vh !important;
       min-height: 360px;
@@ -461,7 +455,7 @@
       .playlist-wrap{grid-template-columns:1fr;}
       #playlistPlayer iframe{height:250px !important;}
       .cinema-modal{ margin: 4vh auto; }
-      #cinemaPlayerMount iframe{ height: 54vh !important; }
+      #cinemaPlayer iframe{ height: 54vh !important; }
     }
   </style>
 </head>
@@ -482,14 +476,12 @@
         <button class="menu-btn" data-go="#teoricos">Teóricos da Psicologia</button>
         <button class="menu-btn" data-go="#areas">Áreas da Psicologia</button>
         <button class="menu-btn" data-go="#concursos">Psicologia para Concursos</button>
-
-        <!-- ✅ NOVO -->
         <button class="menu-btn" data-go="#playlist">Playlist (A–Z)</button>
       </nav>
 
       <div class="hint">
         ✅ Busca ligada: digite no campo “Pesquisar” e o site filtra por título/resumo.<br><br>
-        ✅ Playlist (A–Z): clique em “Iniciar Playlist” e ela segue automaticamente.
+        ✅ Playlist: clique em “Iniciar Playlist” e ela segue automaticamente.
       </div>
     </aside>
 
@@ -735,7 +727,7 @@
           </div>
         </div>
 
-        <!-- ===================== NOVO: PLAYLIST (A–Z) ===================== -->
+        <!-- ===================== PLAYLIST (A–Z) ===================== -->
         <div class="section" id="playlist">
           <h2>Playlist do site (A–Z)</h2>
 
@@ -753,8 +745,8 @@
                 <button class="btn" id="plNext" type="button">Próximo ⟶</button>
               </div>
 
-              <!-- ✅ “Casa” do player (o #playlistPlayer volta pra cá ao fechar o cinema) -->
-              <div class="video" id="playlistPlayerHome">
+              <div class="video">
+                <!-- ✅ Player normal -->
                 <div id="playlistPlayer"></div>
               </div>
 
@@ -774,8 +766,7 @@
   </div>
 
   <!-- =========================
-    MODO NETFLIX / CINEMA (MODAL)
-    - O player é movido pra cá quando abre o modo cinema
+    MODO CINEMA (player separado)
   ========================== -->
   <div id="cinemaOverlay" class="cinema-overlay" aria-hidden="true">
     <div class="cinema-backdrop" data-cinema-close></div>
@@ -789,8 +780,9 @@
         <button class="btn" id="cinemaClose" type="button" aria-label="Fechar">✕</button>
       </div>
 
-      <div class="cinema-player video">
-        <div id="cinemaPlayerMount"></div>
+      <div class="video" style="margin:0;border-radius:0;border:0;">
+        <!-- ✅ Player do cinema (segundo player, NÃO move nada) -->
+        <div id="cinemaPlayer"></div>
       </div>
 
       <div class="cinema-controls">
@@ -831,7 +823,7 @@
     });
 
     // ======================
-    // YouTube nos CARDS (auto-conversão do link completo)
+    // YouTube nos CARDS (embed normal)
     // ======================
     function toYouTubeEmbedUrl(url){
       if(!url) return "";
@@ -863,7 +855,7 @@
     initYouTubeEmbeds();
 
     // ======================
-    // BUSCA (filtra subassuntos por título/resumo)
+    // BUSCA
     // ======================
     const searchInput = document.getElementById("searchInput");
     const clearBtn = document.getElementById("clearSearch");
@@ -891,7 +883,6 @@
 
         card.style.display = match ? "" : "none";
         if(match) visibleCount++;
-
         card.classList.remove("open");
       });
 
@@ -940,10 +931,8 @@
     setInterval(updateClock, 50);
 
     // =========================================================
-    // PLAYLIST (A–Z) + AUTO-PRÓXIMO + MODO CINEMA (YouTube API)
+    // PLAYLIST (A–Z) + AUTO-PRÓXIMO + CINEMA (2 PLAYERS)
     // =========================================================
-
-    // ✅ importante: autoplay confiável só depois de 1 clique do usuário
     let userStartedPlaylist = false;
 
     function getYouTubeId(url){
@@ -993,18 +982,16 @@
     let playlistData = [];
     let playlistIndex = 0;
 
-    // YouTube Player API
-    let ytPlayer = null;
+    // ✅ dois players separados
+    let ytPlayer = null;      // normal
+    let cinemaPlayer = null;  // cinema
     let ytApiReady = false;
-    let playlistReady = false;
 
     // Cinema refs
     const overlay = document.getElementById("cinemaOverlay");
     const cinemaClose = document.getElementById("cinemaClose");
     const openCinemaBtn = document.getElementById("openCinema");
     const cinemaNow = document.getElementById("cinemaNow");
-    const cinemaMount = document.getElementById("cinemaPlayerMount");
-    const playerHome = document.getElementById("playlistPlayerHome");
 
     function updateCinemaTitle(title){
       if(cinemaNow) cinemaNow.textContent = title ? `— ${title}` : "—";
@@ -1030,9 +1017,9 @@
       const item = playlistData[playlistIndex];
       updateNowPlaying(item.title);
 
-      if(ytPlayer && typeof ytPlayer.loadVideoById === "function"){
-        ytPlayer.loadVideoById(item.videoId);
-      }
+      // ✅ manda o vídeo para os 2 players (o que estiver visível toca)
+      ytPlayer?.loadVideoById(item.videoId);
+      cinemaPlayer?.loadVideoById(item.videoId);
     }
 
     function nextPlaylist(){ playPlaylistByIndex(playlistIndex + 1); }
@@ -1053,7 +1040,7 @@
         btn.textContent = item.title;
 
         btn.addEventListener("click", ()=>{
-          userStartedPlaylist = true; // clique = libera autoplay
+          userStartedPlaylist = true;
           const realIndex = playlistData.findIndex(x => x.videoId === item.videoId);
           playPlaylistByIndex(realIndex >= 0 ? realIndex : 0);
         });
@@ -1063,19 +1050,38 @@
       });
     }
 
-    function createPlaylistPlayer(firstVideoId){
+    function buildPlayers(){
+      if(!playlistData.length) return;
+
+      const vars = {
+        rel:0,
+        modestbranding:1,
+        playsinline:1,
+        origin: window.location.origin
+      };
+
       ytPlayer = new YT.Player("playlistPlayer", {
-        width: "100%",
         height: "300",
-        videoId: firstVideoId || "",
-        playerVars: { autoplay: 0, rel: 0, modestbranding: 1 },
-        events: {
-          onReady: () => {
-            // mostra título do primeiro (parado)
-            if(playlistData.length) updateNowPlaying(playlistData[0].title);
-          },
-          onStateChange: (event) => {
-            // ✅ Auto-próximo SOMENTE após clique do usuário
+        width: "100%",
+        videoId: playlistData[0].videoId,
+        playerVars: vars,
+        events:{
+          onReady: () => updateNowPlaying(playlistData[0].title),
+          onStateChange:(event)=>{
+            if(event.data === YT.PlayerState.ENDED && userStartedPlaylist){
+              nextPlaylist();
+            }
+          }
+        }
+      });
+
+      cinemaPlayer = new YT.Player("cinemaPlayer", {
+        height: "600",
+        width: "100%",
+        videoId: playlistData[0].videoId,
+        playerVars: vars,
+        events:{
+          onStateChange:(event)=>{
             if(event.data === YT.PlayerState.ENDED && userStartedPlaylist){
               nextPlaylist();
             }
@@ -1084,13 +1090,10 @@
       });
     }
 
-    // Chamado automaticamente pela API do YouTube
     window.onYouTubeIframeAPIReady = function(){
       ytApiReady = true;
-      if(playlistReady && !ytPlayer){
-        if(playlistData.length) createPlaylistPlayer(playlistData[0].videoId);
-        else createPlaylistPlayer("");
-      }
+      // se a playlist já foi montada, cria os players
+      if(playlistData.length) buildPlayers();
     };
 
     function initPlaylistAZ(){
@@ -1098,7 +1101,11 @@
         .sort((a,b)=> normalizeText(a.title).localeCompare(normalizeText(b.title)));
 
       renderPlaylist(playlistData);
-      playlistReady = true;
+
+      // Se API já carregou antes
+      if(ytApiReady && playlistData.length && !ytPlayer){
+        buildPlayers();
+      }
 
       // botões
       document.getElementById("plNext")?.addEventListener("click", ()=>{
@@ -1122,33 +1129,19 @@
         const filtered = !t ? playlistData : playlistData.filter(v => normalizeText(v.title).includes(t));
         renderPlaylist(filtered);
       });
-
-      // Se API já carregou antes
-      if(ytApiReady && !ytPlayer){
-        if(playlistData.length) createPlaylistPlayer(playlistData[0].videoId);
-        else createPlaylistPlayer("");
-      }
     }
 
     initPlaylistAZ();
 
     // ======================
-    // MODO CINEMA / NETFLIX
+    // MODO CINEMA (abre/fecha)
     // ======================
     function openCinema(){
-      if(!overlay || !cinemaMount) return;
+      if(!overlay) return;
       overlay.classList.add("open");
       overlay.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
-
-      // move o player para o modal
-      const playerDiv = document.getElementById("playlistPlayer");
-      if(playerDiv) cinemaMount.appendChild(playerDiv);
-
-      // atualiza label
-      if(playlistData.length){
-        updateCinemaTitle(playlistData[playlistIndex]?.title || "");
-      }
+      updateCinemaTitle(playlistData[playlistIndex]?.title || "");
     }
 
     function closeCinema(){
@@ -1156,15 +1149,12 @@
       overlay.classList.remove("open");
       overlay.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-
-      // devolve o player para a “casa”
-      const playerDiv = document.getElementById("playlistPlayer");
-      if(playerDiv && playerHome){
-        playerHome.appendChild(playerDiv);
-      }
     }
 
-    openCinemaBtn?.addEventListener("click", openCinema);
+    openCinemaBtn?.addEventListener("click", ()=>{
+      userStartedPlaylist = true; // clique ajuda autoplay no cinema também
+      openCinema();
+    });
     cinemaClose?.addEventListener("click", closeCinema);
 
     overlay?.addEventListener("click", (e) => {
